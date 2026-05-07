@@ -221,13 +221,15 @@ h3 {
   margin-bottom: 22px;
 }
 
-.two-column {
+.two-column,
+.about-layout {
   display: grid;
   gap: clamp(34px, 5vw, 58px);
   grid-template-columns: 1fr 1fr;
 }
 
-.two-column p {
+.two-column p,
+.about-copy p {
   font-size: 1.05rem;
   line-height: 1.72;
   margin: 0 0 25px;
@@ -236,6 +238,82 @@ h3 {
 .two-column .lead {
   font-weight: 700;
   line-height: 1.65;
+}
+
+.research-lemma {
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.58;
+  margin-bottom: 28px;
+  padding: 4px 0 4px 18px;
+}
+
+.experience-panel {
+  border-left: 1px solid var(--rule);
+  display: grid;
+  gap: 14px;
+  padding-left: clamp(22px, 3vw, 34px);
+  position: relative;
+}
+
+.experience-panel::before {
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  content: "";
+  height: 11px;
+  left: -6px;
+  position: absolute;
+  top: 4px;
+  width: 11px;
+}
+
+.experience-item {
+  background: rgba(250, 240, 227, 0.58);
+  border: 1px solid var(--panel-rule);
+  border-radius: 5px;
+  padding: 16px 18px 15px;
+  position: relative;
+}
+
+.experience-item::before {
+  background: var(--accent);
+  border-radius: 50%;
+  content: "";
+  height: 8px;
+  left: calc(clamp(22px, 3vw, 34px) * -1 - 5px);
+  position: absolute;
+  top: 24px;
+  width: 8px;
+}
+
+.experience-date {
+  color: var(--accent);
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.experience-item h3 {
+  font-family: "Red Hat Text", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.experience-item p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
 }
 
 .timeline-list {
@@ -462,8 +540,19 @@ h3 {
   }
 
   .two-column,
+  .about-layout,
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .experience-panel {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .experience-panel::before,
+  .experience-item::before {
+    display: none;
   }
 
   .project-card {
