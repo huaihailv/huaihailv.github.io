@@ -6,7 +6,8 @@
   --accent: #a23e02;
   --rule: #d7e2ec;
   --panel-rule: #ead9c4;
-  --max-width: 1230px;
+  --max-width: 1180px;
+  --page-pad: clamp(18px, 4vw, 50px);
 }
 
 * {
@@ -54,31 +55,34 @@ h3 {
   align-items: center;
   color: var(--accent);
   display: grid;
-  grid-template-columns: 220px 1fr 220px;
-  height: 92px;
-  padding: 0 50px;
+  grid-template-columns: minmax(160px, 1fr) auto minmax(140px, 1fr);
+  min-height: 92px;
+  padding: 0 var(--page-pad);
+  position: relative;
 }
 
 .brand {
   color: var(--ink);
   font-family: Petrona, Georgia, "Times New Roman", serif;
-  font-size: 1.55rem;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
   text-decoration: none;
 }
 
 .primary-nav {
   display: flex;
-  gap: 42px;
+  gap: clamp(24px, 4.5vw, 54px);
   justify-content: center;
+  min-width: 0;
 }
 
 .primary-nav a {
   color: var(--accent);
-  font-size: 1.35rem;
-  letter-spacing: 0.28em;
+  font-size: clamp(1.02rem, 1.8vw, 1.35rem);
+  letter-spacing: clamp(0.14em, 0.36vw, 0.28em);
   padding-bottom: 10px;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .primary-nav a.active {
@@ -89,6 +93,7 @@ h3 {
   display: flex;
   gap: 16px;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 .header-tools a,
@@ -102,21 +107,21 @@ h3 {
 
 .header-tools svg {
   fill: currentColor;
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 28px;
 }
 
 .page {
   margin: 0 auto;
   max-width: var(--max-width);
-  padding: 22px 34px 64px;
+  padding: 22px var(--page-pad) 68px;
 }
 
 .hero {
   align-items: stretch;
   display: grid;
-  gap: 42px;
-  grid-template-columns: minmax(390px, 520px) 1px 1fr;
+  gap: clamp(28px, 4vw, 44px);
+  grid-template-columns: minmax(340px, 0.9fr) 1px minmax(0, 1.1fr);
 }
 
 .profile-card {
@@ -124,9 +129,10 @@ h3 {
   background: var(--panel);
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  min-height: 560px;
-  padding: 54px 34px;
+  min-height: 540px;
+  padding: clamp(38px, 5vw, 58px) clamp(24px, 3vw, 34px);
   text-align: center;
 }
 
@@ -134,15 +140,15 @@ h3 {
   aspect-ratio: 1;
   background: #f3e6d5;
   border-radius: 5px;
-  height: 260px;
-  margin: 0 auto 28px;
+  height: clamp(220px, 23vw, 270px);
+  margin: 0 auto 30px;
   object-fit: cover;
   object-position: center;
-  width: 260px;
+  width: clamp(220px, 23vw, 270px);
 }
 
 .profile-card h1 {
-  font-size: 2.65rem;
+  font-size: clamp(2.28rem, 4vw, 2.78rem);
   font-weight: 400;
   margin-bottom: 14px;
 }
@@ -155,6 +161,7 @@ h3 {
 .profile-links {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
@@ -182,23 +189,24 @@ h3 {
 }
 
 .hero-copy {
-  padding: 62px 0 24px;
+  align-self: center;
+  padding: 42px 0 24px;
 }
 
 .hero-copy h2 {
-  font-size: 2.35rem;
+  font-size: clamp(2.05rem, 4vw, 2.55rem);
   font-weight: 700;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .hero-copy p {
-  font-size: 1.12rem;
-  line-height: 1.75;
-  margin: 0 0 24px;
+  font-size: clamp(1.02rem, 1.45vw, 1.12rem);
+  line-height: 1.72;
+  margin: 0 0 22px;
 }
 
 .section {
-  margin-top: 42px;
+  margin-top: clamp(38px, 6vw, 58px);
 }
 
 .section h2 {
@@ -215,7 +223,7 @@ h3 {
 
 .two-column {
   display: grid;
-  gap: 58px;
+  gap: clamp(34px, 5vw, 58px);
   grid-template-columns: 1fr 1fr;
 }
 
@@ -252,7 +260,7 @@ h3 {
 
 .news-list {
   display: grid;
-  grid-template-columns: 145px 1fr;
+  grid-template-columns: minmax(118px, 0.22fr) minmax(0, 1fr);
   margin: 0;
 }
 
@@ -274,26 +282,43 @@ h3 {
 
 .project-grid {
   display: grid;
-  gap: 26px;
-  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: clamp(24px, 3vw, 32px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.project-card img {
-  aspect-ratio: 1.85 / 1;
+.project-card {
+  display: grid;
+  grid-template-rows: auto minmax(3.35rem, auto) 1fr auto;
+  min-width: 0;
+}
+
+.project-figure {
+  align-items: center;
+  aspect-ratio: 16 / 9;
   background: var(--panel);
   border: 1px solid var(--panel-rule);
   border-radius: 4px;
-  height: 178px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 14px;
-  object-fit: cover;
+  overflow: hidden;
+  padding: clamp(8px, 1vw, 12px);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.project-figure img {
+  height: 100%;
+  object-fit: contain;
   object-position: center;
   width: 100%;
 }
 
 .project-card h3 {
-  font-size: 1.3rem;
+  font-size: clamp(1.12rem, 1.6vw, 1.34rem);
   font-weight: 400;
   margin-bottom: 12px;
+  max-width: 95%;
 }
 
 .project-card p {
@@ -301,12 +326,16 @@ h3 {
   font-size: 0.92rem;
   line-height: 1.58;
   margin: 0 0 10px;
-  min-height: 82px;
   padding-top: 13px;
 }
 
 .project-card a {
   font-size: 0.92rem;
+}
+
+.project-card:hover .project-figure {
+  border-color: rgba(162, 62, 2, 0.35);
+  transform: translateY(-2px);
 }
 
 .publication-list {
@@ -322,7 +351,7 @@ h3 {
 .site-footer {
   margin: 0 auto;
   max-width: var(--max-width);
-  padding: 0 34px 40px;
+  padding: 0 var(--page-pad) 40px;
 }
 
 .site-footer p {
@@ -333,17 +362,23 @@ h3 {
   padding-top: 20px;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1040px) {
   .site-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
     height: auto;
-    justify-items: center;
-    padding: 24px 22px;
+    padding-bottom: 22px;
+    padding-top: 22px;
     row-gap: 18px;
   }
 
+  .primary-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    order: 3;
+  }
+
   .header-tools {
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .hero {
@@ -363,8 +398,9 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .project-card p {
-    min-height: auto;
+  .project-card {
+    grid-template-rows: auto auto auto auto;
+    max-width: 760px;
   }
 }
 
@@ -375,6 +411,10 @@ h3 {
 
   .primary-nav {
     gap: 18px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    width: 100%;
   }
 
   .primary-nav a {
@@ -386,6 +426,15 @@ h3 {
   .site-footer {
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .header-tools {
+    justify-content: center;
   }
 
   .profile-card {
