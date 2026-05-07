@@ -283,7 +283,7 @@ h3 {
 .project-grid {
   display: grid;
   align-items: stretch;
-  gap: clamp(24px, 3vw, 32px);
+  gap: clamp(26px, 3.4vw, 38px);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -295,20 +295,21 @@ h3 {
 
 .project-figure {
   align-items: center;
-  aspect-ratio: 16 / 9;
-  background: var(--panel);
+  aspect-ratio: 2.15 / 1;
+  background: #fffdf8;
   border: 1px solid var(--panel-rule);
   border-radius: 4px;
   display: flex;
   justify-content: center;
-  margin-bottom: 14px;
+  margin: 0 0 16px;
   overflow: hidden;
-  padding: clamp(8px, 1vw, 12px);
+  padding: clamp(4px, 0.7vw, 8px);
   transition: border-color 160ms ease, transform 160ms ease;
 }
 
 .project-figure img {
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   object-position: center;
   width: 100%;
@@ -346,6 +347,73 @@ h3 {
 .publication-list li {
   line-height: 1.68;
   margin-bottom: 0.8rem;
+}
+
+.publication-page {
+  max-width: 1060px;
+}
+
+.publication-header {
+  margin: 18px 0 clamp(36px, 5vw, 52px);
+  max-width: 820px;
+}
+
+.publication-header h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.publication-header p:not(.eyebrow) {
+  font-size: 1.08rem;
+  line-height: 1.72;
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.publication-list.detailed {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+.publication-list.detailed li {
+  border-bottom: 1px solid var(--rule);
+  margin: 0;
+  padding: 18px 0 20px;
+}
+
+.publication-list.detailed article {
+  display: grid;
+  gap: 5px;
+}
+
+.publication-list.detailed h3 {
+  font-family: "Red Hat Text", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.publication-list.detailed p {
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.publication-list.detailed strong {
+  color: var(--ink);
+  font-weight: 800;
 }
 
 .site-footer {
